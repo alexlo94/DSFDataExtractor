@@ -1,0 +1,146 @@
+{
+    "greeting" : {
+        "type" : "command",
+        "title" : "greeting",
+        "id" : "1",
+        "content" : "Welcome to the DSF Data Extractor.This tool will attempt to access the social media profile of your choice and download all data associated with it. These files will be saved in your computer's download directory. Would you like to proceed? (y/n)",
+        "commands" : {
+            "y" : "notice",
+            "Y" : "notice",
+            "n" : "close",
+            "N" : "close"
+        }
+    },
+
+    "close" : {
+        "type" : "exit/text",
+        "title" : "close",
+        "id" : "2",
+        "content" : "Process terminated. You may now close the window."
+    },
+
+    "notice" : {
+        "type" : "text",
+        "title" : "notice",
+        "id" : "2",
+        "content" : "NOTE: Use of the Data Extractor and all related functions must be associated with a DSF person of interest (i.e. a case subject or otherwise authorized search subject). Configuration of the tool to bypass this restriction is against the agent TOS. Violations of the agent TOS can and will be punished by appropriate means. Please consult your commanding officer(s) if there are any questions.",
+        "next" : "request"
+    },
+
+    "request" : {
+        "type" : "command",
+        "title" : "request",
+        "id" : "3",
+        "content" : "Please enter the target social media URL. Platforms currently supported include: Facebook, Instagram, Twitter, and LinkedIn. Any accounts with two-factor authentication enabled are currently beyond the scope of this tool, please check back in further releases.",
+        "commands" : {
+            "https://www.instagram.com/astoldbydepsi/" : "identified",
+            "http://www.instagram.com/astoldbydepsi/" : "identified",
+            "astoldbydepsi" : "identified",
+            "@astoldbydepsi" : "identified"
+        }
+    },
+
+    "identified" : {
+        "type" : "text",
+        "title" : "identified",
+        "id" : "4",
+        "content" : "Target identified as <strong>Charlotte Depsi</strong>. Data extraction will commence.",
+        "next" : "spidering"
+    },
+
+    "spidering" : {
+        "type" : "text",
+        "title" : "spidering",
+        "id" : "5",
+        "content" : "<strong>ATTEMPT #1:</strong> Spidering. Accessing available social media profiles under the name Charlotte Depsi...",
+        "next" : "spidering-failed"
+    },
+
+    "spidering-failed" : {
+        "type" : "text",
+        "title" : "spidering-failed",
+        "id" : "6",
+        "content" : "<strong>ATTEMPT #1:</strong> Failed. Insufficient information available.",
+        "next" : "dictionary"
+    },
+
+    "dictionary" : {
+        "type" : "text",
+        "title" : "dictionary",
+        "id" : "7",
+        "content" : "<strong>ATTEMPT #2:</strong> Dictionary Attack. Src: http://www.skullsecurity.org/wiki/index.php/Passwords",
+        "next" : "dictionary-failed"
+    },
+
+    "dictionary-failed" : {
+        "type" : "text",
+        "title" : "dictionary-failed",
+        "id" : "8",
+        "content" : "<strong>ATTEMPT #2:</strong> Failed. No password matches found.",
+        "next" : "password-reset"
+    },
+
+    "password-reset" : {
+        "type" : "text",
+        "title" : "password-reset",
+        "id" : "9",
+        "content" : "<strong>ATTEMPT #3:</strong> Password Reset. Security questions detected.",
+        "next" : "security-question-1"
+    },
+
+    "security-question-1" : {
+        "type" : "command",
+        "title" : "security-question-1",
+        "id" : "10",
+        "content" : "<strong>SECURITY QUESTION #1:</strong> What was the name of your first pet?",
+        "commands" : {
+            "Bailey" : "security-question-2",
+            "bailey" : "security-question-2",
+            "BAILEY" : "security-question-2"
+        }
+    },
+
+    "security-question-2" : {
+        "type" : "command",
+        "title" : "security-question-2",
+        "id" : "11",
+        "content" : "<strong>SECURITY QUESTION #2:</strong> What is your mother's maiden name?",
+        "commands" : {
+            "McCarthy" : "security-question-3",
+            "mcCarthy" : "security-question-3",
+            "mccarthy" : "security-question-3",
+            "Mccarthy" : "security-question-3",
+            "MCCARTHY" : "security-question-3"
+        }
+    },
+
+    "security-question-3" : {
+        "type" : "command",
+        "title" : "security-question-3",
+        "id" : "12",
+        "content" : "<strong>SECURITY QUESTION #3:</strong> What is your favorite book?",
+        "commands" : {
+            "Alice’s Adventures in Wonderland" : "password-reset-success",
+            "Alice's adventures in wonderland" : "password-reset-success",
+            "alice's adventures in wonderland" : "password-reset-success",
+            "Alices Adventures in Wonderland" : "password-reset-success",
+            "Alices adventures in wonderland" : "password-reset-success",
+            "alices adventures in wonderland" : "password-reset-success"
+        }
+    },
+
+    "password-reset-success" : {
+        "type" : "exit/download",
+        "title" : "password-reset-success",
+        "id" : "13",
+        "content" : "Password reset successful. Download will begin now.",
+        "url" : "http://localhost:3000/finish"
+    },
+
+    "invalid-input" : {
+        "type" : "text",
+        "title" : "invalid-input",
+        "id" : "0",
+        "content" : "Please enter valid input, as requested by the message printed. For best results, remember to keep all input lower-case unless otherwise specified."
+    }
+}
