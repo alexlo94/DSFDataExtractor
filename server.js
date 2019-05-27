@@ -64,7 +64,7 @@ app.post('/advance', (req, res) => {
 
 app.get('/finish', (req, res) => {
     console.log(req.body);
-    res.download('downloads/testZip.zip');
+    res.download('downloads/CharlotteDepsi_Data.zip');
 });
 
 app.listen(port, () => {
