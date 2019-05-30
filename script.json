@@ -125,7 +125,9 @@
             "alice's adventures in wonderland" : "password-reset-success",
             "Alices Adventures in Wonderland" : "password-reset-success",
             "Alices adventures in wonderland" : "password-reset-success",
-            "alices adventures in wonderland" : "password-reset-success"
+            "alices adventures in wonderland" : "password-reset-success",
+            "Alice in Wonderland" : "password-reset-success",
+            "alice in wonderland" : "password-reset-success"
         }
     },
 
